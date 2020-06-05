@@ -31,9 +31,10 @@
                 (cons (read_head left_tape) right_tape))))
 
     (defun tm_helper (left_tape right_tape state)
-        (defvar transition (car (cdr (assoc (read_head right_tape) (cdr (assoc state transitions))))))
-        (defvar new_state (car transition))
-        (defvar action (car (cdr transition)))
+        (setf transition (car (cdr (assoc (read_head right_tape) (cdr (assoc state transitions))))))
+        (setf new_state (car transition))
+        (setf action (car (cdr transition)))
+        
         (cond ((eq action 'LEFT) 
                 (multiple-value-bind
                     (left_tape right_tape)
@@ -58,4 +59,4 @@
 
     (tm_helper () input_tape 0))
 
-(tm (list 2 2 3) '((0 (1 (0 LEFT)) (2 (0 RIGHT) (3 (0 NIL))))))
+(tm (list 2 2 3) '((0 (1 (0 LEFT)) (2 (1 RIGHT) (3 (0 NIL))))))

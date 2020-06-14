@@ -41,9 +41,9 @@
     (write right_tape)
     (terpri) (terpri)
 
-    (setf transition (car (cdr (assoc (read_head right_tape) (cdr (assoc state transitions))))))
+    (setf transition (cadr (assoc (read_head right_tape) (cdr (assoc state transitions)))))
     (setf new_state (car transition))
-    (setf action (car (cdr transition)))
+    (setf action (cadr transition))
 
     (cond
       ((eq action 'LEFT)
